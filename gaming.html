@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <title> Starving Simulator</title>
+        <style type="text/css">
+            body{
+                background-color: rgb(191, 175, 255);
+            }
+            #Score{
+                text-align: center;
+                font-size: 50px;
+            }
+            #Cat{
+                position: absolute;
+                top: 40%;
+                left:40%;
+            }
+            #Click{
+                position: absolute;
+                top:70%;
+                left:38%;
+                width: 300px;
+                height:100px;
+            }
+            .full{
+                background-color:greenyellow;
+            }
+            .half{
+                background-color: yellow;
+            }
+            .low{
+                background-color: red;
+            }
+        </style>
+        <style>
+            
+        </style>
+    </head>
+
+    <body>
+        <div>
+            <h1 id="Score">0</h1>
+         </div>
+         <div>
+            <canvas id="Canvus" height=30px width=300px></canvas>
+         </div>
+         <img width=300px id="Cat" src="https://www.petplace.com/static/7d6a8f1cbf0d495045e4ec93f1e8cc10/975ef/happiness.png">
+        <div id="button1">
+            <button id="Click" onclick="itClicked()">
+                FEED HIM
+            </button>
+        </div>
+     
+         <script type="text/javascript">
+            let health = 200;
+            let score = 0;
+            let flag = false;
+            const score2 = document.getElementById('Score');
+            let time = setInterval(() => {
+                score++;
+                health=health-1-(health*0.01);
+                score2.innerHTML = 'Score: '+score;
+                if(health<=0){
+                    redirect();
+                }
+                if(health>125){
+                    document.getElementById("Canvus").className='full'
+                } else if(health>75){
+                    document.getElementById("Canvus").className='half'
+                }else{
+                    document.getElementById("Canvus").className='low'
+                }
+                
+            }, 50);
+            function redirect(){
+                document.location.href = 'https://www.youtube.com/watch?v=r11mz5jvHaU&ab_channel=ThatOneFoxy';
+                clearInterval(time);
+            }
+            function itClicked(){
+                health+=5;
+            }
+
+         </script>
+
+    </body>
+</html>
